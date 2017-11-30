@@ -10,9 +10,14 @@ KEY_PLUGIN=/home/tempest/tempest/keystone-tempest-plugin
 MR_PLUGIN=/home/tempest/tempest/murano-tempest-plugin
 HEAT_PLUGIN=/home/tempest/tempest/heat-tempest-plugin
 HOR_PLUGIN=/home/tempest/tempest/tempest-horizon
+CI_PLIGIN=_PLUGIN=/home/tempest/tempest/cinder-tempest-plugin
+IR_PLUGIN=/home/tempest/tempest/ironic-tempest-plugin
+OC_PLUGIN=/home/tempest/tempest/octavia-tempest-plugin
+BA_PLUGIN=/home/tempest/tempest/barbican-tempest-plugin
 
 for i in ${DS_PLUGIN} ${US_REPO_TEMPEST} ${MG_PLUGIN} ${NT_PLUGIN} \
-    ${MN_PLUGIN} ${KEY_PLUGIN} ${MR_PLUGIN} ${HEAT_PLUGIN} ${HOR_PLUGIN};do
+    ${MN_PLUGIN} ${KEY_PLUGIN} ${MR_PLUGIN} ${HEAT_PLUGIN} ${HOR_PLUGIN} \
+    ${CI_PLIGIN} ${IR_PLUGIN} ${OC_PLUGIN} ${BA_PLUGIN};do
     git checkout master && git pull
 done
 
