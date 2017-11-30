@@ -37,7 +37,9 @@ RUN git clone https://github.com/openstack/tempest.git && cd tempest \
 WORKDIR /home/tempest/tempest
 #RUN /bin/bash -c "source .venv/bin/activate" \
 
-RUN  for i in designate-tempest-plugin magnum-tempest-plugin neutron-tempest-plugin manila-tempest-plugin keystone-tempest-plugin murano-tempest-plugin heat-tempest-plugin tempest-horizon; do \
+RUN  for i in designate-tempest-plugin magnum-tempest-plugin neutron-tempest-plugin manila-tempest-plugin \
+       keystone-tempest-plugin murano-tempest-plugin heat-tempest-plugin tempest-horizon \
+       cinder-tempest-plugin ironic-tempest-plugin octavia-tempest-plugin barbican-tempest-plugin; do \
        git clone https://github.com/openstack/"$i" && pip install -e ./"$i" && pip install -r ./"$i"/test-requirements.txt; done
 
 RUN pip install 'tox!=2.8.0'
