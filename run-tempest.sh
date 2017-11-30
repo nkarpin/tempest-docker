@@ -17,7 +17,7 @@ for i in ${DS_PLUGIN} ${US_REPO_TEMPEST} ${MG_PLUGIN} ${NT_PLUGIN} \
 done
 
 cd /home/tempest/python-tempestconf
-source .venv/bin/activate
+#source .venv/bin/activate
 
 python config_tempest/config_tempest.py --debug identity.uri $OS_AUTH_URL \
             identity.admin_password  $OS_PASSWORD --create
