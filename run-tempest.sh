@@ -1,10 +1,18 @@
 #!/bin/bash
 source /home/tests/$SOURCE_FILE
 
-DS_REPO_PLUGIN=/home/tempest/tempest/designate-tempest-plugin
+DS_PLUGIN=/home/tempest/tempest/designate-tempest-plugin
 US_REPO_TEMPEST=/home/tempest/tempest
+MG_PLUGIN=/home/tempest/tempest/magnum-tempest-plugin
+NT_PLUGIN=/home/tempest/tempest/neutron-tempest-plugin
+MN_PLUGIN=/home/tempest/tempest/manila-tempest-plugin
+KEY_PLUGIN=/home/tempest/tempest/keystone-tempest-plugin
+MR_PLUGIN=/home/tempest/tempest/murano-tempest-plugin
+HEAT_PLUGIN=/home/tempest/tempest/heat-tempest-plugin
+HOR_PLUGIN=/home/tempest/tempest/tempest-horizon
 
-for i in ${DS_REPO_TEMPEST} ${US_REPO_TEMPEST} ;do
+for i in ${DS_PLUGIN} ${US_REPO_TEMPEST} ${MG_PLUGIN} ${NT_PLUGIN} \
+    ${MN_PLUGIN} ${KEY_PLUGIN} ${MR_PLUGIN} ${HEAT_PLUGIN} ${HOR_PLUGIN};do
     git checkout master && git pull
 done
 
