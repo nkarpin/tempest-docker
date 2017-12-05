@@ -50,5 +50,6 @@ RUN pip install junitxml \
 
 ENV SOURCE_FILE keystonercv3
 ENV TESTRAIL_ENV testrailenv
+ENV TESTRAIL_ON true
 
 ENTRYPOINT ["run-tests"]
