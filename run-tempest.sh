@@ -56,8 +56,9 @@ cd /home/tempest/tempest
 
 #exec tempest run --regex designate_tempest_plugin.tests.api
 tempest run "$@"
-pip install junitxml
-pip install xunit2testrail
+
+
+
 testr last --subunit | subunit2junitxml > /home/tests/verification.xml
 source /home/tests/$TESTRAIL_ENV
 
