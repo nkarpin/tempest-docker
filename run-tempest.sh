@@ -1,4 +1,21 @@
 #!/bin/bash
+function test-function {
+    testr last --subunit | subunit2junitxml > /home/tests/verification.xml
+    source /home/tests/$TESTRAIL_ENV
+
+    report -v \
+    --testrail-plan-name "$TESTRAIL_PLAN_NAME" \
+    --env-description "$TEST_GROUP" \
+    --testrail-url  "$TESTRAIL_URL" \
+    --testrail-user "$TESTRAIL_USER" \
+    --testrail-password "$TESTRAIL_PASSWORD" \
+    --testrail-project "$TESTRAIL_PROJECT" \
+    --testrail-milestone "$TESTRAIL_MILESTONE" \
+    --testrail-suite "$TESTRAIL_SUITE" \
+    --testrail-name-template '{custom_test_group}.{title}' \
+    --xunit-name-template '{classname}.{methodname}' /home/tests/verification.xml
+}
+
 source /home/tests/$SOURCE_FILE
 
 DS_PLUGIN=/home/tempest/tempest/designate-tempest-plugin
@@ -57,19 +74,6 @@ cd /home/tempest/tempest
 #exec tempest run --regex designate_tempest_plugin.tests.api
 tempest run "$@"
 
-
-
-testr last --subunit | subunit2junitxml > /home/tests/verification.xml
-source /home/tests/$TESTRAIL_ENV
-
-report -v \
---testrail-plan-name "$TESTRAIL_PLAN_NAME" \
---env-description "$TEST_GROUP" \
---testrail-url  "$TESTRAIL_URL" \
---testrail-user "$TESTRAIL_USER" \
---testrail-password "$TESTRAIL_PASSWORD" \
---testrail-project "$TESTRAIL_PROJECT" \
---testrail-milestone "$TESTRAIL_MILESTONE" \
---testrail-suite "$TESTRAIL_SUITE" \
---testrail-name-template '{custom_test_group}.{title}' \
---xunit-name-template '{classname}.{methodname}' /home/tests/verification.xml
+if [[ "$TESTRAIL_ON" == "true" ]]; then
+    test-function
+fi
