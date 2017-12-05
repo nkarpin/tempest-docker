@@ -45,6 +45,9 @@ RUN  for i in designate-tempest-plugin magnum-tempest-plugin neutron-tempest-plu
 
 RUN pip install 'tox!=2.8.0'
 
+RUN pip install junitxml \
+    && pip install xunit2testrail
+
 ENV SOURCE_FILE keystonercv3
 ENV TESTRAIL_ENV testrailenv
 
